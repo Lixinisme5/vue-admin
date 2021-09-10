@@ -38,8 +38,8 @@ export function addDataFun(params){
     })
 }
 
-//修改请求   post和get传递参数不一样
-export function updataDataFun(params){
+// 修改请求   post和get传递参数不一样
+export function updateData(params){
     return request({
         url:'/money/updateData',
         method:'post',

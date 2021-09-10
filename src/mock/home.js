@@ -62,6 +62,7 @@ export default {
     //!添加
     addData:(config)=>{
         //时间设置
+        console.log('添加接收的信息',JSON.parse(config.body));
         Date.prototype.Format = function (fmt) {
             var o = {
                 "M+": this.getMonth() + 1, //月份 
@@ -79,7 +80,6 @@ export default {
         }
     var time2 = new Date().Format("yyyy-MM-dd HH:mm:ss");
         let {name,address,payType,income,pay,money} = JSON.parse(config.body)
-        let date = new Date();
         List.unshift(Mock.mock({
             id:Mock.Random.guid(),
             name:name,
@@ -98,23 +98,22 @@ export default {
         }
     },
     updateData:(config)=>{
-        console.log(JSON.parse(config.body));
         let {id,name,address,payType,income,pay,money} = JSON.parse(config.body)
         List.forEach(item=>{
-            if(item.id === id){
-                item.name= name;
-                item.address= address; 
-                item.payType= payType;
-                item.income= income;
-                item.pay= pay;
-                item.money= money;
+            if(item.id == id){
+                item.name = name;
+                item.address = address;
+                item.payType = payType;
+                item.income = income;
+                item.pay = pay;
+                item.money = money;
             }
         })
-        return{
+
+        return {
             code:200,
             msg:'更新成功',
             data:null
         }
     }
-    
 }

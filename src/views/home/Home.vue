@@ -56,14 +56,16 @@ export default {
   methods: {
     //!修改
     openUpdataDialog(row) {
-      this.show = true;
-      this.btnType = 1;
       this.row = row;
+      this.btnType = 1;
+      this.show = true;
     },
     //!添加
     openDialog() {
+      this.btnType = 0;
       this.show = true;
     },
+    //!关闭弹框
     closeDialog() {
       this.show = false;
     },
@@ -72,8 +74,8 @@ export default {
       this.$refs.tablecom.batchDataFun();
       this.getHomeData();
     },
+    //!筛选
     homeSearchFun(val) {
-      //!筛选
       this.search = val;
       this.getHomeData();
     },

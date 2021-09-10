@@ -24,4 +24,7 @@ body {
   color: #333;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
+a {
+  text-decoration: none;
+}
 </style>

@@ -47,35 +47,31 @@ export default {
   border-bottom: 1px solid #f1f1f1;
 }
 .container {
+  width: 100%;
+  display: flex;
   position: fixed;
   top: 60px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
+  height: 100%;
+
   .aside {
-    position: fixed;
-    width: 180px;
-    height: 100%;
-    border-right: 1px solid #f1f1f1;
+    width: auto;
   }
   .main {
-    position: fixed;
-    left: 180px;
-    right: 0px;
-    height: calc(100vh -60px);
+    flex-grow: 1;
+    width: 100%;
+    overflow: auto;
+    height: calc(100vh - 60px);
 
     //面包屑
     .bread {
+      // display: flex;
       width: 100%;
       height: 30px;
     }
     //主体内容
     main {
-      position: fixed;
-      left: 180px;
-      right: 0px;
-      top: 90px;
-      bottom: 80px;
+      width: 100%;
+      height: calc(100vh - 170px);
       overflow: auto;
     }
     //底部
