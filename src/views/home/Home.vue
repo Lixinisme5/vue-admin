@@ -14,7 +14,12 @@
       @openDialog="openUpdataDialog"
     />
     <!-- 分页组件 -->
-    <PageComponent />
+    <PageComponent
+      :total="total"
+      :pageSize="pageSize"
+      @currentPage="currentPage"
+      @sizeChange="sizeChange"
+    />
     <!-- 弹出层 -->
     <Dialog
       v-if="show"
@@ -37,11 +42,14 @@ export default {
   name: "Home",
   data() {
     return {
-      tableData: [],
-      search: "",
-      show: false,
-      row: {},
-      btnType: 0, //0 添加  1  更新
+      tableData: [], //*数据
+      search: "", //*搜索
+      show: false, //*弹窗隐藏
+      row: {}, //*每一条数据
+      btnType: 0, //*0 添加  1  更新
+      total: 0, //*总数据
+      page: 1, //*当前页码
+      pageSize: 10, //*每页显示条数
     };
   },
   components: {
@@ -54,6 +62,16 @@ export default {
     this.getHomeData(); //!首屏
   },
   methods: {
+    //!每页显示条数
+    sizeChange(val) {
+      this.pageSize = val;
+      this.getHomeData();
+    },
+    //!分页显示当前页
+    currentPage(val) {
+      this.page = val;
+      this.getHomeData();
+    },
     //!修改
     openUpdataDialog(row) {
       this.row = row;
@@ -80,15 +98,18 @@ export default {
       this.getHomeData();
     },
     getHomeData() {
-      //!复用搜索和首屏
+      //!复用搜索和首屏 分页
       const params = {
-        search: this.search, //!
+        search: this.search, //!搜索
+        page: this.page,
+        pageSize: this.pageSize,
       };
       getDataFun(params).then((res) => {
         //!发送请求
-        // console.log(res);
+        console.log("返回的数据", res);
         if (res.code === 200) {
           this.tableData = res.data; //!数据重新加载
+          this.total = res.total;
         }
       });
     },

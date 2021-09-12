@@ -37,12 +37,12 @@
 </template>
 
 <script>
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.jpeg";
 import hea from "../assets/icon.png";
 export default {
   data() {
     return {
-      name: "后台管理",
+      name: "欢乐豆后台管理",
       img: logo,
       hea: hea,
     };
@@ -58,10 +58,11 @@ export default {
   justify-content: space-between;
   align-items: center;
   .left {
-    width: 180px;
+    width: 280px;
     height: 60px;
     display: flex;
     align-items: center;
+    color: gold;
     img {
       width: 36px;
       height: 36px;
