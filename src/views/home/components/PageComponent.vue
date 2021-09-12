@@ -43,5 +43,9 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less" scoped>
+#container {
+  margin-top: 10px;
+  text-align: center;
+}
 </style>

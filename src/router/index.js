@@ -43,6 +43,44 @@ const routes = [
           title:'分享功能'
         }
       },
+      {//数据试图
+        path:'dataview',
+        name:'Data',
+        component:()=>import('../views/dataview/DataView.vue'), 
+        meta:{
+          icon:'el-icon-coin',
+          title:'数据视图'
+        },
+        children:[
+          {//饼状图
+            path:'piechart',
+            name:'Piechart',
+            component:()=>import('../views/dataview/components/Piechart.vue'),
+            meta:{
+              icon:'el-icon-pie-chart',
+              title:'饼状图'
+            }
+          },
+          {//柱状图
+            path:'barchart',
+            name:'Barchart',
+            component:()=>import('../views/dataview/components/Barchart.vue'),
+            meta:{
+              icon:'el-icon-s-data',
+              title:'柱状图'
+            }
+          },
+          {//折线图
+            path:'linechart',
+            name:'Linechart',
+            component:()=>import('../views/dataview/components/Linechart.vue'),
+            meta:{
+              icon:'el-icon-data-line',
+              title:'折线图'
+            }
+          },
+        ]
+      },
       {//信息
         path:'info',
         name:'Info',
@@ -55,7 +93,7 @@ const routes = [
           {//个人信息
             path:'myinfo',
             name:'Myinfo',
-            component:()=>import('../views/info/Myinfo.vue'),
+            component:()=>import('../views/info/components/Myinfo.vue'),
             meta:{
               icon:'el-icon-setting',
               title:'个人信息'
@@ -64,7 +102,7 @@ const routes = [
           {//修改信息
             path:'updateinfo',
             name:'Updateinfo',
-            component:()=>import('../views/info/Updateinfo.vue'),
+            component:()=>import('../views/info/components/Updateinfo.vue'),
             meta:{
               icon:'el-icon-warning-outline',
               title:'修改信息'
