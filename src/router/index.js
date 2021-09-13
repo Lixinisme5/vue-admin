@@ -12,6 +12,11 @@ const routes = [
     redirect:'/layout/home'   //!重定向
   },
   {
+    path:'/login',
+    name:'Login',
+    component:()=>import('../views/Login.vue')
+  },
+  {
     path: '/layout',
     name: 'Layout', 
     component: Layout,
@@ -112,6 +117,7 @@ const routes = [
       },
     ]
   },
+  
   {
     path:'*',
     name:'404',

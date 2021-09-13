@@ -9,31 +9,32 @@
     >
       <!-- 一级导航 -->
       <template v-for="(item, index) in menu">
-        <router-link :to="'/layout/' + item.path" :key="index">
-          <el-menu-item index="index" v-if="!item.children">
+        <router-link :to="'/layout/' + item.path" :key="item.path">
+          <el-menu-item v-if="!item.children" :index="item.path">
             <i :class="item.meta.icon"></i>
             <span slot="title">{{ item.meta.title }}</span>
           </el-menu-item>
         </router-link>
       </template>
       <!-- 二级路由 -->
-      <template v-for="(item, index) in menu">
-        <el-submenu index="index" :key="index.index" v-if="item.children">
+      <template v-for="item in menu">
+        <el-submenu :index="item.path" :key="item.path" v-if="item.children">
           <template slot="title">
             <i :class="item.meta.icon"></i>
             <span slot="title">{{ item.meta.title }}</span>
           </template>
           <!-- 给a标签添加循环 -->
-          <router-link
-            :to="'/layout/' + item.path + '/' + child.path"
-            v-for="(child, cindex) in item.children"
-            :key="cindex"
-          >
-            <el-menu-item index="cindex">
-              <i :class="child.meta.icon"></i>
-              <span slot="title">{{ child.meta.title }}</span>
-            </el-menu-item>
-          </router-link>
+          <template v-for="child in item.children">
+            <router-link
+              :to="'/layout/' + item.path + '/' + child.path"
+              :key="child.name"
+            >
+              <el-menu-item :index="child.name">
+                <i :class="child.meta.icon"></i>
+                <span slot="title">{{ child.meta.title }}</span>
+              </el-menu-item>
+            </router-link>
+          </template>
         </el-submenu>
       </template>
     </el-menu>
