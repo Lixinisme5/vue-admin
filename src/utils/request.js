@@ -10,7 +10,7 @@ const server = axios.create({
 })
 
 //! 3、请求拦截    登录放token的地方
-server.interceptors.request.use(config=>{
+server.interceptors.request.use(config=>{ 
     return config
 })
  

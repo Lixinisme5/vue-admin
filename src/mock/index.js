@@ -1,6 +1,7 @@
 //mock的接口抛出
 import Mock from 'mockjs';
 import home from './home';
+import loginMock from './loginMock';
 
 Mock.setup({
     timeout:300,
@@ -17,3 +18,5 @@ Mock.mock(/\/money\/batchDelete/,'post',home.batchDeleteById)
 Mock.mock(/\/money\/addData/,'post',home.addData)
 //5、修改接口
 Mock.mock(/\/money\/updateData/,'post',home.updateData)
+//6、登录接口
+Mock.mock(/\/login/,'post',loginMock.login)

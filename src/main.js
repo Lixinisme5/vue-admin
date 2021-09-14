@@ -8,6 +8,11 @@ import ElementUi from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUi,{size:"small",zIndex:3000})
 
+//!引入iview
+import iView from 'iview'
+import 'iview/dist/styles/iview.css';
+Vue.use(iView);
+
 Vue.config.productionTip = false
 
 //!mock注册

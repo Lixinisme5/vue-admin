@@ -8,7 +8,7 @@
       :collapse="isCollapse"
     >
       <!-- 一级导航 -->
-      <template v-for="(item, index) in menu">
+      <template v-for="item in menu">
         <router-link :to="'/layout/' + item.path" :key="item.path">
           <el-menu-item v-if="!item.children" :index="item.path">
             <i :class="item.meta.icon"></i>
@@ -18,7 +18,11 @@
       </template>
       <!-- 二级路由 -->
       <template v-for="item in menu">
-        <el-submenu :index="item.path" :key="item.path" v-if="item.children">
+        <el-submenu
+          :index="item.path"
+          :key="item.path.index"
+          v-if="item.children"
+        >
           <template slot="title">
             <i :class="item.meta.icon"></i>
             <span slot="title">{{ item.meta.title }}</span>
